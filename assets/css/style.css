@@ -1,14 +1,32 @@
 /* ---global style ---*/
 @import url('https://fonts.googleapis.com/css2?family=Quattrocento+Sans&display=swap');
 
-h1, h2, p {
+.intro {
     font-family: 'Quattrocento Sans', sans-serif;
     color: blueviolet;
+    background-color: rgb(84, 145, 236);
+    text-align: center;
 }
 
 body {
+    display: flex;
     align-items: center;
+    min-height: 100vh;
     justify-content: center;
     background: rgb(150, 233, 208);
+}
 
+/** the wrapper is the "play" area **/
+.wrapper {
+    background-color: black;
+    padding: 25px;
+    border-radius: 10px;
+}
+
+.card .back-view img{
+    max-width: 100px;
+}
+
+.card .front-view img{
+    max-width: 100px;
 }
