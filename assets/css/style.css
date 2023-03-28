@@ -1,0 +1,14 @@
+/* ---global style ---*/
+@import url('https://fonts.googleapis.com/css2?family=Quattrocento+Sans&display=swap');
+
+h1, h2, p {
+    font-family: 'Quattrocento Sans', sans-serif;
+    color: blueviolet;
+}
+
+body {
+    align-items: center;
+    justify-content: center;
+    background: rgb(150, 233, 208);
+
+}
