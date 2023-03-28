@@ -12,8 +12,8 @@ function flipCard({target: clickedCard}) {
         }
         cardTwo = clickedCard;
         disableDeck = true;
-        let cardOneImg = cardOne.querySelector(".back-view img").alt,
-        cardTwoImg = cardTwo.querySelector(".back-view img").alt;
+        let cardOneImg = cardOne.querySelector(".back-view img").src,
+        cardTwoImg = cardTwo.querySelector(".back-view img").src;
         matchCards(cardOneImg, cardTwoImg);
     }
 }
@@ -21,7 +21,10 @@ function flipCard({target: clickedCard}) {
 function matchCards(img1, img2) {
     if(img1 === img2) {
         matched++;
-        if(matched == 10) {
+        
+
+        console.log(matchCards)
+        if(matched == 9) {
             setTimeout(() => {
                 return shuffleCard();
             }, 1000);
@@ -48,12 +51,12 @@ function shuffleCard() {
     matched = 0;
     disableDeck = false;
     cardOne = cardTwo = "";
-    let arr = [1, 2, 3, 4, 5, 6, 7, 8, ,9, 10, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9];
     arr.sort(() => Math.random() > 0.5 ? 1 : -1);
     cards.forEach((card, i) => {
         card.classList.remove("flip");
         let imgTag = card.querySelector(".back-view img");
-        imgTag.src = `images/img-${arr[i]}.png`;
+        imgTag.src = `/assets/images/img-${arr[i]}.png`;
         card.addEventListener("click", flipCard);
     });
 }
