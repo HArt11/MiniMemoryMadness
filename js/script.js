@@ -3,6 +3,11 @@ const cards = document.querySelectorAll(".card");
 let matched = 0;
 let cardOne, cardTwo;
 let disableDeck = false;
+let randomCards = [];                //to pick from selection of cards
+let difficultyEasy = ['1, 2']       //difficulty selector 2x2, 3x3 or 4x4 cards
+let difficultyMedium = ['1, 2, 3']
+let difficultyHard = ['1, 2, 3, 4']
+let moves = 0;                 //mover counter
 
 function flipCard({target: clickedCard}) {
     if(cardOne !== clickedCard && !disableDeck) {
@@ -66,4 +71,20 @@ shuffleCard();
 cards.forEach(card => {
     card.addEventListener("click", flipCard);
 });
+
+/* event listener for difficulty click */
+
+function selectDifficulty() {
+    selectDifficulty.addEventListener('click', selectDifficulty)
+}
+
+
+
+/* or board size? */
+
+let boardSize = '[2, 2]';  /*default 2x2? */
+let currentDifficulty = ''; // difficulty selected /
+
+
+/* move counter */
 

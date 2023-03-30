@@ -1,19 +1,13 @@
 /* ---global style ---*/
 @import url('https://fonts.googleapis.com/css2?family=Quattrocento+Sans&display=swap');
 
-.intro {
-    font-family: 'Quattrocento Sans', sans-serif;
-    color: blueviolet;
-    background-color: rgb(84, 145, 236);
-    text-align: center;
-}
-
 body {
     display: flex;
     align-items: center;
     min-height: 100vh;
     justify-content: center;
     background: rgb(150, 233, 208);
+    font-family: 'Quattrocento Sans', sans-serif;
 }
 
 /** the wrapper is the "play" area **/
@@ -101,7 +95,8 @@ body {
 
   /* --- footer styling --- */
 
-  .h2 {
+  
+  h1, h2 {
     text-align: center;
   }
 
@@ -111,4 +106,32 @@ body{
   max-height: fit-content;
   max-width: auto;
   background-position: center;
+}
+
+.difficulty {
+  background-color:  yellow;
+  align-items: center;
+  font-family: 'Quattrocento Sans', sans-serif;
+  color: blueviolet;
+  text-decoration: none;
+}
+
+button {
+  align-items: center;
+}
+
+.return {
+  text-align: center;
+  text-decoration: none;
+}
+
+.selection {
+  text-align: center;
+  align-items: center;
+}
+
+h3 {
+  font-size: small;
+  text-align: center;
+
 }
