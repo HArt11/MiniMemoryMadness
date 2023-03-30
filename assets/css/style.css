@@ -98,3 +98,9 @@ body {
   .card.flip .front-view{
     transform: rotateY(180deg);
   }
+
+  /* --- footer styling --- */
+
+  .h2 {
+    text-align: center;
+  }
