@@ -18,7 +18,7 @@ body {
 
 /** the wrapper is the "play" area **/
 .wrapper {
-    background-color: rgb(228, 240, 69);
+    background-color: rgb(132, 228, 183);
     padding: 25px;
     border-radius: 10px;
 }
@@ -104,3 +104,11 @@ body {
   .h2 {
     text-align: center;
   }
+
+body{
+  background-image: url(/assets/images/background0.jpg);
+  background-repeat: no-repeat;
+  max-height: fit-content;
+  max-width: auto;
+  background-position: center;
+}
