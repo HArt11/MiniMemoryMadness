@@ -1,5 +1,8 @@
 /* ---global style ---*/
 @import url('https://fonts.googleapis.com/css2?family=Quattrocento+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Happy+Monkey&family=Quattrocento+Sans&display=swap');
+
+
 
 body {
     display: flex;
@@ -7,7 +10,8 @@ body {
     min-height: 100vh;
     justify-content: center;
     background: rgb(150, 233, 208);
-    font-family: 'Quattrocento Sans', sans-serif;
+    font-family: 'Happy Monkey', cursive;
+
 }
 
 /** the wrapper is the "play" area **/
@@ -94,8 +98,6 @@ body {
     transform: rotateY(180deg);
   }
 
-  /* --- footer styling --- */
-
   
   h1, h2 {
     text-align: center;
@@ -109,16 +111,14 @@ body{
   background-position: center;
 }
 
-.difficulty {
-  background-color:  yellow;
-  align-items: center;
-  font-family: 'Quattrocento Sans', sans-serif;
-  color: blueviolet;
-  text-decoration: none;
-}
+
 
 button {
   align-items: center;
+  background-color: yellow;
+  font-family: 'Happy Monkey', cursive;
+  color: blueviolet;
+  text-decoration: none;
 }
 
 .return {
