@@ -1,134 +1,95 @@
-//* https://codepen.io/eliortabeka/pen/WwzEEg
+const cards = document.querySelectorAll(".card"),
+timeTag = document.querySelector(".time b"),
+flipsTag = document.querySelector(".flips b"),
+refreshBtn = document.querySelector(".details button");
 
-var symbols = ['panda', 'panda', 'hat', 'hat', 'cat', 'cat', 'toothbrush', 'toothbrush', 'rabbit', 'rabbit', 'leaf', 'leaf', 'apple', 'apple', 'hand', 'hand', 'pig', 'pig'],
-		opened = [],
-		match = 0,
-		moves = 0,
-		$deck = $('.deck'),
-		$scorePanel = $('#score-panel'),
-		$moveNum = $scorePanel.find('.moves'),
-		$ratingStars = $scorePanel.find('i'),
-		$restart = $scorePanel.find('.restart'),
-		delay = 800,
+let maxTime = 20;
+let timeLeft = maxTime;
+let flips = 0;
+let matchedCard = 0;
+let disableDeck = false;
+let isPlaying = false;
+let cardOne, cardTwo, timer;
 
-
-// Shuffle function From http://stackoverflow.com/a/2450976
-function shuffle(array) {
-  var currentIndex = array.length, temporaryValue, randomIndex;
-	
-  while (0 !== currentIndex) {
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex -= 1;
-    temporaryValue = array[currentIndex];
-    array[currentIndex] = array[randomIndex];
-    array[randomIndex] = temporaryValue;
-  }
-
-  return array;
+function initTimer() {
+    if(timeLeft <= 0) {
+        return clearInterval(timer);
+    }
+    timeLeft--;
+    timeTag.innerText = timeLeft;
 }
 
-// Initial Game
-function initGame() {
-	var cards = shuffle(symbols);
-  $deck.empty();
-  match = 0;
-  moves = 0;
-  $moveNum.html(moves);
-
-};
-
-// Set Rating and final Score
-function setRating(moves) {
-	var rating = 3;
-	if (moves > rank3stars && moves < rank2stars) {
-		$ratingStars.eq(2).removeClass('fa-star').addClass('fa-star-o');
-		rating = 2;
-	} else if (moves > rank2stars && moves < rank1stars) {
-		$ratingStars.eq(1).removeClass('fa-star').addClass('fa-star-o');
-		rating = 1;
-	} else if (moves > rank1stars) {
-		$ratingStars.eq(0).removeClass('fa-star').addClass('fa-star-o');
-		rating = 0;
-	}	
-	return { score: rating };
-};
-
-// End Game
-function endGame(moves, score) {
-	swal({
-		allowEscapeKey: false,
-		allowOutsideClick: false,
-		title: 'Congratulations! You Won!',
-		text: 'With ' + moves + ' Moves and ' + score + ' Stars.\nBoom Shaka Lak!',
-		type: 'success',
-		confirmButtonColor: '#9BCB3C',
-		confirmButtonText: 'Play again!'
-	}).then(function(isConfirm) {
-		if (isConfirm) {
-			initGame();
-		}
-	})
+function flipCard({target: clickedCard}) {
+    if(!isPlaying) {
+        isPlaying = true;
+        timer = setInterval(initTimer, 1000);
+    }
+    if(clickedCard !== cardOne && !disableDeck && timeLeft > 0) {
+        flips++;
+        flipsTag.innerText = flips;
+        clickedCard.classList.add("flip");
+        if(!cardOne) {
+            return cardOne = clickedCard;
+        }
+        cardTwo = clickedCard;
+        disableDeck = true;
+        let cardOneImg = cardOne.querySelector(".back-view img").src,
+        cardTwoImg = cardTwo.querySelector(".back-view img").src;
+        matchCards(cardOneImg, cardTwoImg);
+    }
 }
 
-// Restart Game
-$restart.on('click', function() {
-  swal({
-    allowEscapeKey: false,
-    allowOutsideClick: false,
-    title: 'Are you sure?',
-    text: "Your progress will be Lost!",
-    type: 'warning',
-    showCancelButton: true,
-    confirmButtonColor: '#9BCB3C',
-    cancelButtonColor: '#EE0E51',
-    confirmButtonText: 'Yes, Restart Game!'
-  }).then(function(isConfirm) {
-    if (isConfirm) {
-      initGame();
+function matchCards(img1, img2) {
+    if(img1 === img2) {
+        matchedCard++;
+        if(matchedCard == 6 && timeLeft > 0) {
+            return clearInterval(timer);
+        }
+        cardOne.removeEventListener("click", flipCard);
+        cardTwo.removeEventListener("click", flipCard);
+        cardOne = cardTwo = "";
+        return disableDeck = false;
     }
-  })
+
+    setTimeout(() => {
+        cardOne.classList.add("shake");
+        cardTwo.classList.add("shake");
+    }, 400);
+
+    setTimeout(() => {
+        cardOne.classList.remove("shake", "flip");
+        cardTwo.classList.remove("shake", "flip");
+        cardOne = cardTwo = "";
+        disableDeck = false;
+    }, 1200);
+}
+
+function shuffleCard() {
+    timeLeft = maxTime;
+    flips = matchedCard = 0;
+    cardOne = cardTwo = "";
+    clearInterval(timer);
+    timeTag.innerText = timeLeft;
+    flipsTag.innerText = flips;
+    disableDeck = isPlaying = false;
+
+    let arr = [1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6];
+    arr.sort(() => Math.random() > 0.5 ? 1 : -1);
+
+    cards.forEach((card, index) => {
+        card.classList.remove("flip");
+        let imgTag = card.querySelector(".back-view img");
+        setTimeout(() => {
+            imgTag.src = `images/img-${arr[index]}.png`;
+        }, 500);
+        card.addEventListener("click", flipCard);
+    });
+}
+
+shuffleCard();
+
+refreshBtn.addEventListener("click", shuffleCard);
+
+cards.forEach(card => {
+    card.addEventListener("click", flipCard);
 });
-
-// Card flip
-$deck.on('click', '.card:not(".match, .open")', function() {
-	if($('.show').length > 1) { return true; }
-	
-	var $this = $(this),
-			card = $this.context.innerHTML;
-  $this.addClass('open show');
-	opened.push(card);
-
-	// Compare with opened card
-  if (opened.length > 1) {
-    if (card === opened[0]) {
-      $deck.find('.open').addClass('match animated infinite rubberBand');
-      setTimeout(function() {
-        $deck.find('.match').removeClass('open show animated infinite rubberBand');
-      }, delay);
-      match++;
-    } else {
-      $deck.find('.open').addClass('notmatch animated infinite wobble');
-			setTimeout(function() {
-				$deck.find('.open').removeClass('animated infinite wobble');
-			}, delay / 1.5);
-      setTimeout(function() {
-        $deck.find('.open').removeClass('open show notmatch animated infinite wobble');
-      }, delay);
-    }
-    opened = [];
-		moves++;
-		setRating(moves);
-		$moveNum.html(moves);
-  }
-	
-	// End Game if match all cards
-	if (gameCardsQTY === match) {
-		setRating(moves);
-		var score = setRating(moves).score;
-		setTimeout(function() {
-			endGame(moves, score);
-		}, 500);
-  }
-});
-
-initGame();

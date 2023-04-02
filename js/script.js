@@ -1,9 +1,15 @@
 const cards = document.querySelectorAll(".card");
 
 let matched = 0;
-let cardOne, cardTwo;
+let cardOne, cardTwo, timer;    //timer new on this line
 let disableDeck = false;
-
+let flips = 0;                      // flip counter
+let isPlaying = false;             // new
+let maxTime = 20;                   //new
+let timeLeft = maxTime;             //new
+timeTag = document.querySelector(".time b"),
+flipsTag = document.querySelector(".flips b"),
+refreshBtn = document.querySelector(".details button");
 
 
 function flipCard({target: clickedCard}) {
@@ -72,22 +78,31 @@ cards.forEach(card => {
 
 
 
-// Restart Game
-$restart.on('click', function() {
-    swal({
-      allowEscapeKey: false,
-      allowOutsideClick: false,
-      title: 'Are you sure?',
-      text: "Your progress will be Lost!",
-      type: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#9BCB3C',
-      cancelButtonColor: '#EE0E51',
-      confirmButtonText: 'Yes, Restart Game!'
-    }).then(function(isConfirm) {
-      if (isConfirm) {
-        initGame();
-      }
-    })
-  });
-  
+
+function initTimer() {
+    if(timeLeft <= 0) {
+        return clearInterval(timer);
+    }
+    timeLeft--;
+    timeTag.innerText = timeLeft;
+}
+
+function flipCard({target: clickedCard}) {
+    if(!isPlaying) {
+        isPlaying = true;
+        timer = setInterval(initTimer, 1000);
+    }
+    if(clickedCard !== cardOne && !disableDeck && timeLeft > 0) {
+        flips++;
+        flipsTag.innerText = flips;
+        clickedCard.classList.add("flip");
+        if(!cardOne) {
+            return cardOne = clickedCard;
+        }
+        cardTwo = clickedCard;
+        disableDeck = true;
+        let cardOneImg = cardOne.querySelector(".back-view img").src,
+        cardTwoImg = cardTwo.querySelector(".back-view img").src;
+        matchCards(cardOneImg, cardTwoImg);
+    }
+}
