@@ -26,6 +26,7 @@ function matchCards(img1, img2) {
     if(img1 === img2) {
         matched++;
         if(matched == 8) {
+            document.getElementById("win-message").innerHTML = "Congratulations! You found all the matches!";
             setTimeout(() => {
                 return shuffleCard();
             }, 1000);
@@ -86,3 +87,6 @@ function movesCounter () {
 
 
 // add timer here - starts on page load
+
+// winning message
+
