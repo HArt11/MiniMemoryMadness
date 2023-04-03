@@ -28,17 +28,13 @@ function matchCards(img1, img2) {
         if(matched == 8) {
             document.getElementById("win-message").innerHTML = "Congratulations! You found all the matches!";
             disableDeck = true;
-            setTimeout(() => {
-                return shuffleCard();
-            }, 50000);
-            
+   
         }
         cardOne.removeEventListener("click", flipCard);
         cardTwo.removeEventListener("click", flipCard);
         cardOne = cardTwo = "";
         return disableDeck = false;
         
-
     }
     setTimeout(() => {
         cardOne.classList.add("shake");
@@ -91,4 +87,4 @@ function movesCounter () {
  // "onload" event for timer on page load?
 
 
-// reset
+// reset - by clicking new game
