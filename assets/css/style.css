@@ -141,3 +141,7 @@ h3 {
   text-align: center;
   
 }
+
+#moveCounter {
+  bottom: auto;
+}

@@ -2,6 +2,9 @@ const cards = document.querySelectorAll(".card");
 
 let matched = 0;
 let cardOne, cardTwo;
+let moves = 0;
+
+
 let disableDeck = false;
 
 function flipCard({target: clickedCard}) {
@@ -15,6 +18,7 @@ function flipCard({target: clickedCard}) {
         let cardOneImg = cardOne.querySelector(".back-view img").src,
         cardTwoImg = cardTwo.querySelector(".back-view img").src;
         matchCards(cardOneImg, cardTwoImg);
+        movesCounter();
     }
 }
 
@@ -25,11 +29,14 @@ function matchCards(img1, img2) {
             setTimeout(() => {
                 return shuffleCard();
             }, 1000);
+            
         }
         cardOne.removeEventListener("click", flipCard);
         cardTwo.removeEventListener("click", flipCard);
         cardOne = cardTwo = "";
         return disableDeck = false;
+        
+
     }
     setTimeout(() => {
         cardOne.classList.add("shake");
@@ -43,6 +50,8 @@ function matchCards(img1, img2) {
         disableDeck = false;
     }, 1200);
 }
+
+// shuffling cards
 
 function shuffleCard() {
     matched = 0;
@@ -62,6 +71,18 @@ shuffleCard();
     
 cards.forEach(card => {
     card.addEventListener("click", flipCard);
+
+
 });
 
 
+// mount counter, 2 flips = 1 move
+
+function movesCounter () {
+    let addScoreCount = parseInt(document.getElementById("moves").innerText);
+    document.getElementById("moves").innerText = addScoreCount + 1;
+  }
+
+
+
+// add timer here - starts on page load
