@@ -6,19 +6,20 @@ let moves = 0;
 let seconds = 0;
 let disableDeck = false;
 
+
 // begin timer on page load, 1000 milliseconds = 1 second
 
 function startTimer() {
-    window.setInterval("updateTime()", 1000);
+    window.setInterval("updateTimer()", 1000);
 }
 // updates every second
-function updateTime() {
+function updateTimer() {
     ++seconds;
     document.getElementById("seconds").innerHTML = seconds;
 }
 
 
-// based on CodingNepal's memory card game for animations
+// based on CodingNepal's memory card game for animations and flips
 
 function flipCard({target: clickedCard}) {
     if(cardOne !== clickedCard && !disableDeck) {
@@ -41,14 +42,22 @@ function matchCards(img1, img2) {
         if(matched == 8) {
             document.getElementById("win-message").innerHTML = "Well done! You completed in...";
             disableDeck = true;
-   
+
         }
         cardOne.removeEventListener("click", flipCard);
         cardTwo.removeEventListener("click", flipCard);
         cardOne = cardTwo = "";
         return disableDeck = false;
+             
         
     }
+
+
+    // timer to stop on win
+
+
+
+
     setTimeout(() => {
         cardOne.classList.add("shake");
         cardTwo.classList.add("shake");
@@ -61,6 +70,8 @@ function matchCards(img1, img2) {
         disableDeck = false;
     }, 1200);
 }
+
+
 
 // shuffling cards
 
