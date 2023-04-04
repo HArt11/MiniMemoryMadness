@@ -3,9 +3,22 @@ const cards = document.querySelectorAll(".card");
 let matched = 0;
 let cardOne, cardTwo;
 let moves = 0;
-
-
+let seconds = 0;
 let disableDeck = false;
+
+// begin timer on page load, 1000 milliseconds = 1 second
+
+function startTimer() {
+    window.setInterval("updateTime()", 1000);
+}
+// updates every second
+function updateTime() {
+    ++seconds;
+    document.getElementById("seconds").innerHTML = seconds;
+}
+
+
+// based on CodingNepal's memory card game for animations
 
 function flipCard({target: clickedCard}) {
     if(cardOne !== clickedCard && !disableDeck) {
@@ -26,7 +39,7 @@ function matchCards(img1, img2) {
     if(img1 === img2) {
         matched++;
         if(matched == 8) {
-            document.getElementById("win-message").innerHTML = "Congratulations! You found all the matches!";
+            document.getElementById("win-message").innerHTML = "Well done! You completed in...";
             disableDeck = true;
    
         }
@@ -69,8 +82,6 @@ shuffleCard();
     
 cards.forEach(card => {
     card.addEventListener("click", flipCard);
-
-
 });
 
 
@@ -87,4 +98,7 @@ function movesCounter () {
  // "onload" event for timer on page load?
 
 
-// reset - by clicking new game
+
+
+
+// reset - by clicking new game, deck is disabled and no longer auto shuffled

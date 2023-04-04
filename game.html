@@ -20,11 +20,11 @@
 <title>Mini Memory Madness</title>
 </head>
 
-<body>
+<body onload = "startTimer()">
  <div>
     <!--the cards-->
     <div class="wrapper">
-        <h1>Mini Memory Madness!</h>
+        <h1>Mini Memory Madness</h>
             <h2>...find the matching pairs....</h2>
 
         <ul class="cards">
@@ -194,9 +194,10 @@
 
         </ul>   
     <div class="counters">
-        <span class="timer">Timer: 0:00</span>
-        <p class="scores">Moves: <span id="moves">0</span></p>
         <p id="win-message"></p>
+        <p class="seconds">Timer: <span id="seconds">0</span> seconds</p>
+        <p class="scores">Moves: <span id="moves">0</span></p>
+
         <button class="restart">
             <a href="/game.html">New Game</a>
         </button>
