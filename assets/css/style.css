@@ -112,7 +112,7 @@ body{
   background-position: center;
 }
 
-
+/* button styling */
 
 button {
   align-items: center;
@@ -121,6 +121,8 @@ button {
   color: blueviolet;
   text-decoration: none;
   size: 100px;
+  padding: 10px;
+  border-radius: 30px;
 }
 
 .return {
@@ -152,14 +154,15 @@ h3 {
 .timer {
   font-family: 'Happy Monkey', cursive;
   display: inline-block;
-  padding: 24px 32px;
+  border: black;
+  padding: 10px;
   border-radius: 30px;
-  background:yellow;
+  color: yellow;
 }
 
 .timer__part {
-  font-size: 36px;
-  font-weight: bold;
+  font-size: 30px;
+  color: black;
 }
 
 .timer__btn {
@@ -167,8 +170,7 @@ h3 {
   height: 50px;
   margin-left: 16px;
   border-radius: 50%;
-  border: none;
-  color: white;
+  color: purple;
   background: #6cc1f1;
   cursor: pointer;
 }
@@ -179,4 +181,8 @@ h3 {
 
 .timer__btn--stop {
   background: #ff0256;
+}
+
+a {
+  text-decoration: none;
 }

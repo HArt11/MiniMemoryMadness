@@ -3,20 +3,7 @@ const cards = document.querySelectorAll(".card");
 let matched = 0;
 let cardOne, cardTwo;
 let moves = 0;
-let seconds = 0;
 let disableDeck = false;
-
-
-// begin timer on page load, 1000 milliseconds = 1 second
-
-function startTimer() {
-    window.setInterval("updateTimer()", 1000);
-}
-// updates every second
-function updateTimer() {
-    ++seconds;
-    document.getElementById("seconds").innerHTML = seconds;
-}
 
 
 // based on CodingNepal's memory card game for animations and flips
@@ -53,11 +40,6 @@ function matchCards(img1, img2) {
     }
 
 
-    // timer to stop on win
-
-
-
-
     setTimeout(() => {
         cardOne.classList.add("shake");
         cardTwo.classList.add("shake");
@@ -70,8 +52,6 @@ function matchCards(img1, img2) {
         disableDeck = false;
     }, 1200);
 }
-
-
 
 // shuffling cards
 
@@ -107,7 +87,7 @@ function movesCounter () {
 
 
   
-  // stopwatch style timer from   https://codepen.io/dcode-software/pen/XWgyOpg    NEW
+  // stopwatch style timer from   https://codepen.io/dcode-software/pen/XWgyOpg    
   class Timer {
     constructor(root) {
       root.innerHTML = Timer.getHTML();
