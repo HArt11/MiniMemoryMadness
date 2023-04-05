@@ -181,6 +181,13 @@ h3 {
   background: #ff0256;
 }
 
+/* removal of hyperlink */
+
 a {
   text-decoration: none;
+}
+
+.rules {
+  text-align: center;
+  font-style: italic;
 }
