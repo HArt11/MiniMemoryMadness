@@ -11,6 +11,11 @@ body {
     justify-content: center;
     background: rgb(150, 233, 208);
     font-family: 'Happy Monkey', cursive;
+    background-image: url("../images/background0.jpg");
+    background-repeat: no-repeat;
+    max-height: fit-content;
+    max-width: auto;
+    background-position: center;
 
 }
 
@@ -104,13 +109,6 @@ body {
     color: purple;
   }
 
-body{
-  background-image: url(../assets/images/background0.jpg);
-  background-repeat: no-repeat;
-  max-height: fit-content;
-  max-width: auto;
-  background-position: center;
-}
 
 /* button styling */
 
