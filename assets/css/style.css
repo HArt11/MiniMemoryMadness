@@ -105,7 +105,7 @@ body {
   }
 
 body{
-  background-image: url(../images/background0.jpg);
+  background-image: url(../assets/images/background0.jpg);
   background-repeat: no-repeat;
   max-height: fit-content;
   max-width: auto;
