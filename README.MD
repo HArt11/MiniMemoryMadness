@@ -16,8 +16,22 @@ The landing page is simple, with instructions on how to play and a play button c
 
 Responsiveness has been tested on https://ui.dev/amiresponsive, different mobile devices and using the developer tools from Chrome. It did look when using the Chrome developer tools, that the header image did not fit to page. This doesn't appear to be the case on the actual devices. I had some issues with media queries on iPhones, but this has since been resolved.
 
-![Am I Responsive image of how the landing page looks across different browser sizes](assets/images/am%20i%20responsive.png) 
 <br>
+
+The first page shows the initial start page with how to play instructions
+
+![Am I Responsive image of how the landing page looks across different browser sizes](/assets/images/amiresponsive.png) 
+<br>
+
+The second Am I responsive screenshot shows a game in progress. The mobile device showing for this on that webpage doesnt appear to demonstrate the game on a mobile as checking various phone types this was not the case.
+
+<br>
+
+![Am I Responsive image of how the game page looks across different browser sizes](/assets/images/finalResponsive.jpg) 
+
+
+<br>
+
 
 ## Table of Contents
 * [Project Research](#project-research)
@@ -56,12 +70,50 @@ Having a 4 year old that needs constant stimulation or fun things to do, is itse
  ### Research Analysis
   ***
 Research Analysis
-Children like bright colours, playful styles and easy instructions.
+Children like bright colours, playful styles and easy to follow instructions.
 <br><br>
 
 ## User Experience Design
 ***
+* Feedback from users suggested the green backdrop didn't scale correctly on certain mobile devices. After feedback I trialed without, and found the game to feel more user friendly regardless of platform. The series of screenshots below show a game in progress.
+
+<br>
+
+![Screenshots of final homepage design](/assets/images/screenshots/ss1-final.jpg) 
+
+<br>
+
+* This is a screenshot of the final home page with green backdrop removed. When the timer is clicked, the user can enter the number of minutes for the game
+
+<br>
+
+![Screenshots of final timer design](/assets/images/screenshots/ss2-final.jpg)
+
+<br>
+
+* This screenshot shows the timer in action counting down from the user's choice. It also shows the move counter which counts two card flips as one move. 
+
+<br>
+
+![Screenshots of final game in progress design](/assets/images/screenshots/ss3-final.jpg) 
+
+<br>
+
+* This third screenshot shows the message when the game has been completed and the cards matched, and the number of moves the game was completed in. No more cards can be turned and will remain showing until the New Game button is pressed.
+
+<br>
+
+![Screenshots of final New game design](/assets/images/screenshots/ss4-final.jpg) 
+
+<br>
+
+* Once "New Game" is clicked, the cards are flipped and shuffled, the timer and move counter will be reset and the congratulations message will clear ready for the next game.
+
 ## User stories
+***
+* Users did enjoy the game, and suggested some tweaks such as a larger pool of cards to randomly select from as improvements moving forward. The younger testers found the game entertaining even if only for 5minutes
+
+
 <br>
 
 #### First Time Visitor Goals
@@ -91,23 +143,19 @@ Children like bright colours, playful styles and easy instructions.
 
  * ### Navigation
 ***
-![Navigation buttons](assets/images/ss%20new%20game.png)
+ * The user is led through the game by big bright buttons. The page on loading has a landing page with instructions and a "Let's Go!" button to take the user to the game area. 
+ * Navigation is very simple and intended for children.
+ * When a game is completed, the user simply presses New Game to reset the game area and reshuffle the cards.
+  
 <br><br>
 
- * The user is led through the game by big bright buttons which direct players to a new game or the home page. If new game is clicked while on the game page, this resets both a timer, cards and shuffles them.
-  - The "Let's Go!" button on the home page directs the user to the game, ready to play
-<br><br>
-
-* ### The Home page
+* ### The Timer
 ***
 
-![Homepage](assets/images/ss%20home%20page.png)
-
-
-  - The bright background has complementary colours, with bright buttons and styling to attract the attention of the young.
-The landing page takes the player onto the game page. The landing page has the instructions and a welcome message.
+* The timer is clicked and the user can set an optional timer. The user enters the time in minutes required for the game, and begins to count down.
+* The timer has an interactive pause and play button which will pause and start the timer respectively. This is simply styled with limited text.
    
-  - The Home page is fully responsive.
+  - The game page is fully responsive.
 <br><br>
 
 * ### Future Features
@@ -208,7 +256,6 @@ The website contains no backend functionality therefore testing will concentrate
        * Click on "Let's Go!" button takes user to game page.
        * Click on timer to set time, start and stop stopwatch.
         * Verify that pages are responsive to screen size and switches accordingly
-        
         <br><br>
       * Home page
         * Verify that the google maps and youtube video load on all browsers and at all breakpoints. 
